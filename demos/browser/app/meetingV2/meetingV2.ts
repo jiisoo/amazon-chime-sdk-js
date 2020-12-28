@@ -1360,6 +1360,16 @@ export class DemoMeetingApp
   }
 
   dataMessageHandler(dataMessage: DataMessage): void {
+
+    var content = dataMessage.text();
+    var username = dataMessage.senderExternalUserId.split('#').slice(-1)[0];
+    var timestamp = dataMessage.timestampMs;
+    
+    console.log("Message: ")
+    console.log("Username = ", username)
+    console.log("Timestame = ", timestamp)
+    console.log("Content = ", content)
+
     if (!dataMessage.throttled) {
       const isSelf =
         dataMessage.senderAttendeeId === this.meetingSession.configuration.credentials.attendeeId;
